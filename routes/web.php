@@ -13,3 +13,4 @@ Route::get('/shop/{id}',[ProductController::class,'show'])->name('product');
 
 Route::get('/cart',[CartController::class,'cart'])->name('cart');
 Route::get('/add-to-cart/{id}',[CartController::class,'addToCart'])->name('add.to.cart');
+Route::get('/delete-from-cart/{id}',[CartController::class,'delete'])->name('delete.cart');

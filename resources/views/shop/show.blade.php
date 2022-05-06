@@ -19,7 +19,7 @@
             </p>
 
             <p class="font-bold text-l text-black pb-8">
-                Shipping: <span class="text-red-500">$ {{$product->shipping_cost}}</span>
+                Shipping: <span class="text-red-500">$ {{$product->shopping_cost}}</span>
             </p>
 
             <p class="font-thin text-s text-black pb-8">
