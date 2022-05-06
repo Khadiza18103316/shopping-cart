@@ -7,7 +7,7 @@ use App\Models\Product;
 
 class CartController extends Controller
 {
-   public function cart(){
+   public function cart(Request $request){
     //    dd(session('cartItems'));
        return view('cart.index');
    }
@@ -42,8 +42,19 @@ class CartController extends Controller
                unset($cartItems[$request->id]);
                session()->put('cartItems', $cartItems);
            }
-           return redirect()->back()->with('succes', 'Product deleted to cart!');
+           return redirect()->back()->with('succes', 'Product deleted succesfully!');
 
        }
+   }
+
+   public function update(Request $request)
+   {
+       if($request->id && $request->quantity){
+           $cartItems = session()->get('cartItems');
+           $cartItems[$request->id]["quantity"] = $request->quantity;
+           session()->put('cartItems', $cartItems);
+       }
+
+       return redirect()->back()->with('success', 'Quantity added to cart!');
    }
 }

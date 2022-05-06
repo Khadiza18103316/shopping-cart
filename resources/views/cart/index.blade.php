@@ -70,10 +70,6 @@
                                     <div class="text-sm font-medium text-gray-900">
                                         {{$value['name']}}
                                     </div>
-
-                                    {{-- <div class="text-sm font-medium text-gray-400">
-                                        {{$value['brand']}}
-                                    </div> --}}
                                 </div>
                             </div>
                         </td>
@@ -90,13 +86,16 @@
                         </td>
 
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            <select name="quantity" id="quantity" value="{{$value['quantity']}}">
-                                @for ($i = 1; $i <= 10; $i++)
-                                    <option value="{{ $i }}">
-                                        {{ $i }}
-                                    </option>
-                                @endfor
-                            </select>
+                            <form action="{{ route('update.from.cart', $key) }}" method="POST">
+                                @csrf
+                                <select name="quantity" id="quantity"  onchange="this.form.submit()">
+                                    @for ($i = 1; $i <= 10; $i++)
+                                        <option value="{{ $i }}" {{ $value['quantity'] == $i ? 'selected' : ''}}>
+                                            {{ $i }}
+                                        </option>
+                                    @endfor
+                                </select>
+                            </form>
                         </td>
 
                         <td class="px-6 py-4 whitespace-nowrap">
